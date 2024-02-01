@@ -35,6 +35,7 @@ public class ManageApp {
 				while(true) {
 					
 					System.out.println("-------------------------------------------------------------");
+					manageDao.historyCount();
 					System.out.println("직원ID   이름       날짜       근무상태");
 					List<ManageVo> manageList = manageDao.memberList();
 					for(ManageVo Vo : manageList) {
@@ -51,10 +52,11 @@ public class ManageApp {
 					System.out.println();
 					if(memberCode.equals("-1")) {
 						break;
-					} else if(memberCode.equals("q")) {
+					} else if(memberCode.equals("/q")) {
 						stop = false;
 						break;
 					}
+					manageDao.personalHistoryCount(memberCode);
 					while(true) {
 						manageDao.oneMemberList(memberCode);
 						System.out.println("-------------------------------------------------------------");
