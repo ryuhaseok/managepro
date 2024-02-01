@@ -30,11 +30,11 @@ public class ManageDao {
 			String query = "";
 			query += " select   m.member_id, ";
 			query += " 			m.name, ";
-			query += " 			h.date, ";
+			query += " 			date_format(now(), '%Y-%m-%d'), ";
 			query += " 			h.state ";
 			query += " from Members m ";
 			query += " left join History h on m.member_id = h.member_id ";
-			query += " and h.date = '2024-01-17' ";
+			query += " and h.date = date_format(now(), '%Y-%m-%d') ";
 			
 		    pstmt = conn.prepareStatement(query);
 		    
@@ -44,7 +44,7 @@ public class ManageDao {
 		    while(rs.next()) {
 		    	int mbId = rs.getInt("m.member_id");
 		    	String name = rs.getString("m.name");
-		    	String date = rs.getString("h.date");
+		    	String date = rs.getString("date_format(now(), '%Y-%m-%d')");
 		    	String state = rs.getString("h.state");
 		    	
 		    	ManageVo manageVo = new ManageVo(mbId, name, date, state);

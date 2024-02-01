@@ -15,7 +15,7 @@ public class ManageApp {
 		
 		manageDao.memberList();
 		
-		List<ManageVo> manageList = manageDao.memberList();
+		
 		
 		String memberCode;
 		String menuCode;
@@ -36,6 +36,7 @@ public class ManageApp {
 					
 					System.out.println("-------------------------------------------------------------");
 					System.out.println("직원ID   이름       날짜       근무상태");
+					List<ManageVo> manageList = manageDao.memberList();
 					for(ManageVo Vo : manageList) {
 						System.out.println(Vo.getMbId() + ".\t"
 								+ Vo.getName() + ",\t "
@@ -57,7 +58,7 @@ public class ManageApp {
 					while(true) {
 						manageDao.oneMemberList(memberCode);
 						System.out.println("-------------------------------------------------------------");
-						System.out.println("(뒤로가기 : -1");
+						System.out.println("(뒤로가기 : -1)");
 						System.out.println("수정할 날짜를 입력하세요.");
 						System.out.print("수정할 날짜 > ");
 						menuCode = sc.nextLine();
@@ -84,7 +85,9 @@ public class ManageApp {
 			
 		}//while
 		
+		System.out.println("-------------------------------------------");
 		System.out.println("프로그램을 종료합니다.");
+		System.out.println("-------------------------------------------");
 		
 		sc.close();
 		
